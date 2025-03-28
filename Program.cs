@@ -38,6 +38,34 @@ class Program
 
 
         cast();
+
+
+        ////////---------------Example of Generic Func delegates---------------////////////
+
+        Func<int, int, int> func = add;
+
+        int GenericExample=func(5, 12);
+        Console.WriteLine($"addition from generic Func:- {GenericExample}");
+
+        ////////---------------Example of Generic Action delegates---------------////////////
+        
+        Action action = Multiply; 
+        action += Divide;
+
+        action();
+
+        ////////---------------Example of Generic Predicate delegates---------------////////////
+
+
+        Predicate<int> predicate = CompareValue;
+
+        bool Myresult = predicate(5);
+
+        Console.WriteLine($"value is {Myresult}");
+
+
+
+
     }
 
 
@@ -62,13 +90,17 @@ class Program
     }
     public static void Multiply()
     {
-
         Console.WriteLine($"Multiply Numbers ");
     }
 
     public static void Divide()
     {
         Console.WriteLine($"Divide Numbers");
+    }
+
+    public static bool CompareValue(int x)
+    {
+        return (x % 2 == 1);
     }
 
     public delegate int Operations(int x, int y);
